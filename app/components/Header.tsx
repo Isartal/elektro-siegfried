@@ -60,7 +60,7 @@ export default function Header() {
             onClick={() => setMenuOpen(false)}
           >
             <Image
-              src="/logo-elektro-siegfried.png"
+              src="/Logowebsiteee.png"
               alt="Elektro Siegfried"
               width={500}
               height={150}
