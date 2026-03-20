@@ -158,7 +158,7 @@ export default function Header() {
           <div className="flex items-center justify-between border-b border-[#e7e2d8] pb-4">
             <div className="flex items-center gap-3">
               <Image
-                src="/logo-elektro-siegfried.png"
+                src="/Logowebsiteee.png"
                 alt="Elektro Siegfried"
                 width={160}
                 height={50}

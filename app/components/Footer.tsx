@@ -9,7 +9,7 @@ export default function Footer() {
         {/* LOGO + TEXT */}
         <div className="flex flex-col items-center text-center gap-5 sm:items-start sm:text-left">
           <Image
-            src="/logo-elektro-siegfried.png"
+            src="/Logowebsiteee.png"
             alt="Elektro Siegfried"
             width={180}
             height={60}
