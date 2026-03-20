@@ -59,16 +59,16 @@ export default function Header() {
             className="flex shrink-0 items-center"
             onClick={() => setMenuOpen(false)}
           >
-            <Image
-              src="/Logowebsiteee.png"
-              alt="Elektro Siegfried"
-              width={500}
-              height={150}
-              priority
-              className={`w-auto transition-all duration-300 ${
-                scrolled ? "h-12 sm:h-14 lg:h-16" : "h-14 sm:h-16 lg:h-20"
-              }`}
-            />
+<Image
+  src="/Logowebsiteee.png"
+  alt="Elektro Siegfried"
+  width={700}
+  height={220}
+  priority
+  className={`w-auto transition-all duration-300 ${
+    scrolled ? "h-16 sm:h-18 lg:h-20" : "h-20 sm:h-24 lg:h-28"
+  }`}
+/>
           </Link>
 
           {/* Desktop Navigation */}
@@ -157,13 +157,13 @@ export default function Header() {
           {/* Top */}
           <div className="flex items-center justify-between border-b border-[#e7e2d8] pb-4">
             <div className="flex items-center gap-3">
-              <Image
-                src="/Logowebsiteee.png"
-                alt="Elektro Siegfried"
-                width={160}
-                height={50}
-                className="h-10 w-auto"
-              />
+<Image
+  src="/Logowebsiteee.png"
+  alt="Elektro Siegfried"
+  width={260}
+  height={80}
+  className="h-14 w-auto sm:h-16"
+/>
             </div>
 
             <button

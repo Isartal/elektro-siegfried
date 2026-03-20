@@ -56,7 +56,7 @@ export default function Hero() {
 
         <Image
           src="/frame-hero-final.png"
-          alt="Rahmen"
+          alt=""
           fill
           className={`object-cover transition-opacity duration-1000 ${
             showFinalFrame ? "opacity-90" : "opacity-0"
