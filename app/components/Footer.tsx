@@ -11,8 +11,8 @@ export default function Footer() {
           <Image
             src="/Logowebsiteee.png"
             alt="Elektro Siegfried"
-            width={180}
-            height={60}
+            width={220}
+            height={70}
             className="h-auto w-auto"
           />
 
