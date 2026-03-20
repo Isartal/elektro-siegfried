@@ -1,26 +1,120 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #f8f6f0;
+  --color-surface: #f3f0e8;
+  --color-panel: #181210;
+  --color-text: #1f1715;
+  --color-muted: #6e625c;
+  --color-border: #e5ddd2;
+
+  --color-accent: #2f7d3b;
+  --color-accent-dark: #256531;
+  --color-accent-light: #e4f1e6;
+  --color-accent-soft: #b7e2bf;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.btn-primary {
+  background: #2f7d3b;
+  color: white;
+  padding: 12px 32px;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: 0.2s;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: #256531;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 12px 32px;
+  border-radius: 10px;
+  font-weight: 600;
+  backdrop-filter: blur(6px);
+  transition: 0.2s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+@keyframes lightning {
+  0%,
+  100% {
+    transform: rotate(-4deg) scale(1);
+  }
+  50% {
+    transform: rotate(-7deg) scale(1.04);
+  }
+}
+
+.animate-lightning {
+  animation: lightning 2.6s ease-in-out infinite;
+}
+
+@keyframes introPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.65) rotate(-12deg);
+    filter: blur(6px);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.08) rotate(2deg);
+    filter: blur(0);
+  }
+  70% {
+    transform: scale(0.98) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes introText {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    letter-spacing: 0.5em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.35em;
+  }
+}
+
+.animate-intro-pop {
+  animation: introPop 0.9s ease-out forwards;
+}
+
+.animate-intro-text {
+  animation: introText 0.8s ease-out 0.35s forwards;
+  opacity: 0;
 }
