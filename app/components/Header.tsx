@@ -62,11 +62,11 @@ export default function Header() {
 <Image
   src="/Logowebsiteee.png"
   alt="Elektro Siegfried"
-  width={700}
-  height={220}
+  width={800}
+  height={250}
   priority
   className={`w-auto transition-all duration-300 ${
-    scrolled ? "h-16 sm:h-18 lg:h-20" : "h-20 sm:h-24 lg:h-28"
+    scrolled ? "h-20 lg:h-24" : "h-24 sm:h-28 lg:h-32"
   }`}
 />
           </Link>
@@ -160,9 +160,9 @@ export default function Header() {
 <Image
   src="/Logowebsiteee.png"
   alt="Elektro Siegfried"
-  width={260}
-  height={80}
-  className="h-14 w-auto sm:h-16"
+  width={320}
+  height={100}
+  className="h-16 w-auto sm:h-18"
 />
             </div>
 
