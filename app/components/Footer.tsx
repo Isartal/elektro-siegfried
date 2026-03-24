@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
@@ -24,11 +26,16 @@ const serviceLinks = [
 export default function Footer() {
   return (
     <footer className="mt-0 border-t border-[#ece6dc] bg-[linear-gradient(180deg,#fcfaf6_0%,#f7f4ee_100%)]">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-10 lg:py-16">
+      
+      {/* 🔥 WICHTIG: KEIN TOP SPACING */}
+      <div className="mx-auto max-w-7xl px-4 pt-0 pb-14 sm:px-6 sm:pt-0 lg:px-10 lg:pt-0 lg:pb-16">
+        
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr_0.9fr_1fr] lg:gap-12">
+          
           {/* Brand */}
           <div className="rounded-[2rem] border border-[#ece6dc] bg-white/80 p-6 shadow-[0_16px_40px_rgba(15,23,42,0.05)] backdrop-blur-sm sm:p-7">
             <div className="flex flex-col items-start gap-4">
+              
               <Link href="/" className="mx-auto mb-1 inline-flex items-center">
                 <Image
                   src="/logogo.png"
@@ -85,20 +92,18 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-base font-bold tracking-tight text-[#1f1715]">
-              Navigation
-            </h3>
-            <div className="mt-5 h-[2px] w-12 rounded-full bg-[#2f7d3b]/70" />
+            <h3 className="text-base font-bold text-[#1f1715]">Navigation</h3>
+            <div className="mt-5 h-[2px] w-12 bg-[#2f7d3b]/70" />
 
             <ul className="mt-6 space-y-3">
               {navigationLinks.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="group inline-flex items-center gap-2 text-[#5f544d] transition duration-300 hover:text-[#2f7d3b]"
+                    className="group inline-flex items-center gap-2 text-[#5f544d] transition hover:text-[#2f7d3b]"
                   >
-                    <span>{item.name}</span>
-                    <ArrowUpRight className="h-4 w-4 opacity-0 transition duration-300 group-hover:translate-x-0.5 group-hover:opacity-100" />
+                    {item.name}
+                    <ArrowUpRight className="h-4 w-4 opacity-0 transition group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
@@ -107,16 +112,12 @@ export default function Footer() {
 
           {/* Leistungen */}
           <div>
-            <h3 className="text-base font-bold tracking-tight text-[#1f1715]">
-              Leistungen
-            </h3>
-            <div className="mt-5 h-[2px] w-12 rounded-full bg-[#2f7d3b]/70" />
+            <h3 className="text-base font-bold text-[#1f1715]">Leistungen</h3>
+            <div className="mt-5 h-[2px] w-12 bg-[#2f7d3b]/70" />
 
             <ul className="mt-6 space-y-3 text-[#5f544d]">
               {serviceLinks.map((service) => (
-                <li key={service} className="leading-6">
-                  {service}
-                </li>
+                <li key={service}>{service}</li>
               ))}
             </ul>
           </div>
@@ -124,72 +125,37 @@ export default function Footer() {
           {/* Rechtliches */}
           <div>
             <div className="rounded-[2rem] border border-[#ece6dc] bg-white/75 p-6 shadow-[0_14px_36px_rgba(15,23,42,0.04)]">
-              <h3 className="text-base font-bold tracking-tight text-[#1f1715]">
-                Rechtliches
-              </h3>
-              <div className="mt-5 h-[2px] w-12 rounded-full bg-[#2f7d3b]/70" />
+              <h3 className="text-base font-bold text-[#1f1715]">Rechtliches</h3>
+              <div className="mt-5 h-[2px] w-12 bg-[#2f7d3b]/70" />
 
               <ul className="mt-6 space-y-3">
                 <li>
-                  <Link
-                    href="/impressum"
-                    className="inline-flex items-center gap-2 text-[#5f544d] transition duration-300 hover:text-[#2f7d3b]"
-                  >
-                    Impressum
-                  </Link>
+                  <Link href="/impressum">Impressum</Link>
                 </li>
                 <li>
-                  <Link
-                    href="/datenschutz"
-                    className="inline-flex items-center gap-2 text-[#5f544d] transition duration-300 hover:text-[#2f7d3b]"
-                  >
-                    Datenschutz
-                  </Link>
+                  <Link href="/datenschutz">Datenschutz</Link>
                 </li>
               </ul>
 
-              <div className="mt-8 rounded-2xl border border-[#e8e3d9] bg-[#fcfaf6] p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#2f7d3b]">
-                  Elektro Siegfried
-                </p>
-                <p className="mt-3 text-sm leading-6 text-[#5f544d]">
-                  Saubere Elektroarbeiten, strukturierte Abläufe und
-                  zuverlässige Umsetzung für Projekte in München und Umgebung.
-                </p>
-
-                <Link
-                  href="/kontakt"
-                  className="mt-4 inline-flex min-h-[46px] items-center justify-center rounded-xl bg-[#2f7d3b] px-5 py-3 text-sm font-bold !text-white shadow-[0_12px_28px_rgba(47,125,59,0.18)] transition hover:bg-[#276a32]"
-                >
-                  Anfrage stellen
-                </Link>
-              </div>
+              <Link
+                href="/kontakt"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#2f7d3b] px-5 py-3 text-sm font-bold text-white"
+              >
+                Anfrage stellen
+              </Link>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom bar */}
+      {/* Bottom */}
       <div className="border-t border-[#ece6dc] bg-white/70">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-5 text-center text-sm text-[#6b615b] sm:flex-row sm:px-6 sm:text-left lg:px-10">
-          <p>© {new Date().getFullYear()} Elektromeisterbetrieb Elektro Siegfried</p>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-4 py-5 text-center text-sm text-[#6b615b] sm:flex-row lg:px-10">
+          <p>© {new Date().getFullYear()} Elektro Siegfried</p>
 
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
-            <span>München und Umgebung</span>
-
-            <Link
-              href="/impressum"
-              className="transition hover:text-[#2f7d3b]"
-            >
-              Impressum
-            </Link>
-
-            <Link
-              href="/datenschutz"
-              className="transition hover:text-[#2f7d3b]"
-            >
-              Datenschutz
-            </Link>
+          <div className="flex gap-4">
+            <Link href="/impressum">Impressum</Link>
+            <Link href="/datenschutz">Datenschutz</Link>
           </div>
         </div>
       </div>
