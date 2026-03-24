@@ -139,7 +139,7 @@ export default function Footer() {
 
               <Link
                 href="/kontakt"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#2f7d3b] px-5 py-3 text-sm font-bold text-white"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-[#2f7d3b] px-5 py-3 text-sm font-bold !text-white"
               >
                 Anfrage stellen
               </Link>
