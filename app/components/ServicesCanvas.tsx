@@ -28,11 +28,11 @@ type ServiceCard = {
   text: string;
   href: string;
   icon: IconName;
-  tags: string[];
+  tags: readonly string[];
 };
 
 type ServicesCanvasProps = {
-  cards: ServiceCard[];
+  cards: readonly ServiceCard[];
 };
 
 const iconMap = {
@@ -51,7 +51,6 @@ export default function ServicesCanvas({ cards }: ServicesCanvasProps) {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Desktop Leinwand */}
       <div className="hidden lg:block">
         <div className="group relative overflow-hidden">
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-white via-white/80 to-transparent" />
@@ -110,7 +109,6 @@ export default function ServicesCanvas({ cards }: ServicesCanvasProps) {
         </div>
       </div>
 
-      {/* Mobile / Tablet */}
       <div className="lg:hidden">
         <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-3 pt-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
           {cards.map((card) => {
