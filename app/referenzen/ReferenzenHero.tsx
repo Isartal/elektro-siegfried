@@ -2,80 +2,99 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import ScrollReveal from "../components/ScrollReveal";
+import { ArrowRight, Phone, MapPin, ShieldCheck, Zap } from "lucide-react";
 
 export default function ReferenzenHero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-[#f9f7f2]">
       <div className="relative h-[68vh] min-h-[500px] w-full sm:h-[74vh] sm:min-h-[560px] lg:h-[78vh] lg:min-h-[620px]">
         <Image
           src="/referenzeen-hero.jpg"
-          alt="Referenzen von Elektromeisterbetrieb Siegfried"
+          alt="Referenzen von Elektro Siegfried in München und Umgebung"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
 
-        <div className="absolute inset-0 bg-black/45" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.35),rgba(0,0,0,0.45),rgba(0,0,0,0.65))] lg:bg-[linear-gradient(to_right,rgba(0,0,0,0.55),rgba(0,0,0,0.25),rgba(0,0,0,0.55))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,125,59,0.18),transparent_35%)]" />
+        <div className="absolute inset-0 bg-white/12" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#f9f7f2]/28 via-transparent to-black/28" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,125,59,0.14),transparent_35%)]" />
 
-        <div className="relative z-10 flex h-full items-center">
-          <div className="mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-10">
+        <div className="absolute inset-0 flex items-center px-5 sm:px-6 lg:px-10">
+          <div className="mx-auto w-full max-w-7xl">
             <div className="flex justify-center lg:justify-end">
-              <div className="max-w-3xl text-center text-white lg:text-right">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#8fd29b] sm:text-sm md:text-base">
-                  Elektromeisterbetrieb
-                </p>
+              <ScrollReveal>
+                <div className="max-w-3xl rounded-[2rem] border border-white/40 bg-white/56 p-6 text-center shadow-[0_20px_60px_rgba(15,23,42,0.10)] backdrop-blur-md sm:p-8 md:p-10 lg:p-12 lg:text-right">
+                  <ScrollReveal delay={0.04}>
+                    <p className="inline-flex rounded-full border border-[#dbe9de] bg-[#f4faf5]/92 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#2f7d3b] sm:text-xs lg:ml-auto">
+                      Elektromeisterbetrieb
+                    </p>
+                  </ScrollReveal>
 
-                <div className="mx-auto mt-4 h-[2px] w-24 rounded-full bg-[#2f7d3b] lg:ml-auto lg:mr-0 lg:w-28" />
+                  <ScrollReveal delay={0.1}>
+                    <h1 className="mt-6 text-4xl font-black leading-[0.98] tracking-tight text-[#18181b] sm:text-5xl md:text-6xl lg:text-7xl">
+                      Referenzen
+                      <span className="block text-[#3f3f46]">
+                        aus München und Umgebung
+                      </span>
+                    </h1>
+                  </ScrollReveal>
 
-                <h1 className="mt-6 text-3xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
-                  Referenzen
-                  <span className="block text-white/90">
-                    aus München & Umgebung
-                  </span>
-                </h1>
+                  <ScrollReveal delay={0.16}>
+                    <div className="mt-5 h-[3px] w-28 rounded-full bg-[#2f7d3b] shadow-[0_0_18px_rgba(47,125,59,0.18)] sm:w-36 md:w-44 lg:ml-auto" />
+                  </ScrollReveal>
 
-                <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-white/85 sm:text-lg sm:leading-8 md:text-xl lg:ml-auto lg:mr-0">
-                  Einblicke in ausgewählte Projekte aus Elektroinstallation,
-                  Sanierung, Beleuchtung und modernen Energielösungen mit Fokus
-                  auf saubere und zuverlässige Umsetzung.
-                </p>
+                  <ScrollReveal delay={0.22}>
+                    <p className="mt-6 max-w-2xl text-sm leading-7 text-[#5f544d] sm:text-base sm:leading-8 md:text-lg lg:ml-auto">
+                      Einblicke in Projekte aus Elektroinstallation,
+                      Sanierung, Beleuchtung, Wallbox, Wärmepumpe und Smart Home
+                      mit Fokus auf saubere, fachgerechte und zuverlässige
+                      Umsetzung im Raum München.
+                    </p>
+                  </ScrollReveal>
 
-                <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-4 lg:justify-end">
-                  <a
-                    href="tel:+4917644481312"
-                    className="inline-flex min-h-[50px] w-full items-center justify-center rounded-xl bg-[#2f7d3b] px-8 py-3 text-sm font-bold !text-white shadow-[0_14px_34px_rgba(47,125,59,0.28)] transition hover:bg-[#256531] sm:w-auto"
-                  >
-                    Jetzt anrufen
-                  </a>
+                  <ScrollReveal delay={0.28}>
+                    <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4 lg:justify-end">
+                      <a
+                        href="tel:+4917644481312"
+                        className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#2f7d3b] px-8 py-3.5 text-sm font-bold !text-white shadow-[0_14px_30px_rgba(47,125,59,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#276a32]"
+                      >
+                        <Phone className="mr-2 h-4 w-4" />
+                        Jetzt anrufen
+                      </a>
 
-                  <Link
-                    href="/kontakt"
-                    className="inline-flex min-h-[50px] w-full items-center justify-center rounded-xl border border-white/30 bg-white/10 px-8 py-3 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/15 sm:w-auto"
-                  >
-                    Kostenlos anfragen
-                  </Link>
+                      <Link
+                        href="/kontakt"
+                        className="inline-flex min-h-[52px] items-center justify-center rounded-xl border border-[#d9ddd8] bg-white/90 px-8 py-3.5 text-sm font-semibold text-[#1f1715] shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#f7f5ef]"
+                      >
+                        Kostenlos anfragen
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </div>
+                  </ScrollReveal>
+
+                  <ScrollReveal delay={0.34}>
+                    <div className="mt-8 grid gap-3 text-sm text-[#27272a] sm:grid-cols-3 lg:justify-items-end">
+                      <div className="flex items-center gap-2 rounded-xl border border-[#e8e3d9] bg-white/82 px-4 py-3 shadow-sm backdrop-blur-sm">
+                        <MapPin className="h-4 w-4 text-[#2f7d3b]" />
+                        <span>München & Umgebung</span>
+                      </div>
+
+                      <div className="flex items-center gap-2 rounded-xl border border-[#e8e3d9] bg-white/82 px-4 py-3 shadow-sm backdrop-blur-sm">
+                        <ShieldCheck className="h-4 w-4 text-[#2f7d3b]" />
+                        <span>Elektromeisterbetrieb</span>
+                      </div>
+
+                      <div className="flex items-center gap-2 rounded-xl border border-[#e8e3d9] bg-white/82 px-4 py-3 shadow-sm backdrop-blur-sm">
+                        <Zap className="h-4 w-4 text-[#2f7d3b]" />
+                        <span>Sauber & zuverlässig</span>
+                      </div>
+                    </div>
+                  </ScrollReveal>
                 </div>
-
-                <div className="mt-8 flex flex-col items-center gap-3 text-sm text-white/85 sm:mt-10 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-x-6 sm:gap-y-3 md:text-base lg:justify-end">
-                  <span className="flex items-center gap-2">
-                    <span className="text-[#8fd29b]">✓</span>
-                    München & Umgebung
-                  </span>
-
-                  <span className="flex items-center gap-2">
-                    <span className="text-[#8fd29b]">✓</span>
-                    Elektromeisterbetrieb
-                  </span>
-
-                  <span className="flex items-center gap-2 text-center sm:text-left">
-                    <span className="text-[#8fd29b]">✓</span>
-                    Saubere und zuverlässige Ausführung
-                  </span>
-                </div>
-              </div>
+              </ScrollReveal>
             </div>
           </div>
         </div>

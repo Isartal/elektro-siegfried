@@ -1,100 +1,153 @@
 import Hero from "./components/Hero";
+import ScrollReveal from "./components/ScrollReveal";
+import ServicesCanvas from "./components/ServicesCanvas";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
   Bolt,
-  Hammer,
-  BatteryCharging,
-  SunMedium,
-  Flame,
-  Lightbulb,
-  Building2,
-  Wrench,
+  ShieldCheck,
+  PhoneCall,
+  MapPin,
+  BadgeCheck,
+  Sparkles,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Elektro Siegfried | Elektromeisterbetrieb in München und Umgebung",
   description:
-    "Elektro Siegfried bietet Elektroinstallationen, Sanierung, Beleuchtung, Wallbox, Photovoltaik, Wärmepumpen und Smart Home in München und Umgebung.",
+    "Elektro Siegfried bietet Elektroinstallationen, Sanierung, Wallbox, Photovoltaik, Wärmepumpen und moderne Gebäudetechnik in München und Umgebung.",
+  keywords: [
+    "Elektriker München",
+    "Elektroinstallation München",
+    "Wallbox München",
+    "Photovoltaik München",
+    "Wärmepumpe Elektrik München",
+    "Elektromeisterbetrieb München",
+    "Sanierung Elektrik München",
+  ],
   alternates: {
     canonical: "https://www.elektro-siegfried.de",
   },
   openGraph: {
     title: "Elektro Siegfried | Elektromeisterbetrieb in München und Umgebung",
     description:
-      "Fachgerechte Elektroarbeiten für Neubau, Umbau und Sanierung in München und Umgebung.",
+      "Saubere Elektroarbeiten für Neubau, Sanierung und moderne Gebäudetechnik in München und Umgebung.",
     url: "https://www.elektro-siegfried.de",
     images: ["/og-image.jpg"],
+    type: "website",
+    locale: "de_DE",
   },
 };
 
 const serviceCards = [
   {
     title: "Elektroinstallationen",
-    text: "Saubere Installationen für Altbau, Neubau und moderne Gebäude.",
+    text: "Saubere Installationen für Altbau, Neubau und moderne Gebäude mit klaren Abläufen und zuverlässiger Ausführung.",
     href: "/leistungen",
-    icon: Bolt,
+    icon: "bolt",
     tags: ["Altbau", "Neubau"],
   },
   {
     title: "Sanierung und Modernisierung",
-    text: "Erneuerung bestehender Anlagen mit klarer Struktur und zuverlässiger Umsetzung.",
+    text: "Erneuerung bestehender Anlagen mit strukturierter Planung und sauberer Umsetzung im Bestand.",
     href: "/leistungen",
-    icon: Hammer,
+    icon: "hammer",
     tags: ["Sanierung", "Modernisierung"],
   },
   {
     title: "Wallbox und E Mobilität",
-    text: "Individuelle Ladelösungen für Ihr Zuhause und eine zukunftssichere Energieversorgung.",
+    text: "Individuelle Ladelösungen für Zuhause und die passende elektrische Vorbereitung für moderne Mobilität.",
     href: "/leistungen",
-    icon: BatteryCharging,
+    icon: "battery",
     tags: ["Wallbox", "E Mobilität"],
   },
   {
     title: "Photovoltaik und Energie",
-    text: "Effiziente Lösungen für nachhaltige Energie und mehr Unabhängigkeit.",
+    text: "Zukunftssichere Lösungen für nachhaltige Energie, mehr Effizienz und mehr Unabhängigkeit im Alltag.",
     href: "/leistungen",
-    icon: SunMedium,
+    icon: "sun",
     tags: ["Photovoltaik", "Energie"],
   },
   {
     title: "Wärmepumpen",
-    text: "Fachgerechte elektrische Anbindung für moderne Heizsysteme und Sanierungen.",
+    text: "Fachgerechte elektrische Anbindung für moderne Heizsysteme und anspruchsvolle Sanierungsprojekte.",
     href: "/leistungen",
-    icon: Flame,
+    icon: "flame",
     tags: ["Wärmepumpen", "Integration"],
   },
   {
     title: "Smart Home und Beleuchtung",
-    text: "Intelligente Steuerung und moderne Lichtkonzepte für mehr Komfort im Alltag.",
+    text: "Intelligente Steuerung und moderne Lichtkonzepte für mehr Komfort, Funktion und Atmosphäre.",
     href: "/leistungen",
-    icon: Lightbulb,
+    icon: "lightbulb",
     tags: ["Smart Home", "Beleuchtung"],
   },
   {
     title: "Hausverwaltungen",
-    text: "Zuverlässige Betreuung von Objekten mit klarer Abstimmung und schneller Umsetzung.",
+    text: "Zuverlässige Betreuung von Objekten mit klarer Abstimmung, schneller Reaktion und sauberer Ausführung.",
     href: "/leistungen",
-    icon: Building2,
+    icon: "building",
     tags: ["Objektbetreuung", "Wartung"],
   },
   {
     title: "Störung und Notdienst",
-    text: "Schnelle Hilfe bei Ausfällen, Defekten und akuten Problemen vor Ort.",
+    text: "Schnelle Hilfe bei Defekten, Ausfällen und akuten Problemen vor Ort mit strukturierter Fehlersuche.",
     href: "/leistungen",
-    icon: Wrench,
+    icon: "wrench",
     tags: ["Störung", "Notdienst"],
+  },
+] as const;
+
+const audienceCards = [
+  {
+    title: "Privatkunden",
+    text: "Moderne Elektroinstallationen, Umbauten und Sanierungen mit persönlicher Betreuung und sauberer Umsetzung.",
+  },
+  {
+    title: "Hausverwaltungen",
+    text: "Zuverlässige Unterstützung bei Instandhaltung, Modernisierung und laufenden Elektroarbeiten im Objekt.",
+  },
+  {
+    title: "Sanierung und Umbau",
+    text: "Strukturierte Planung und fachgerechte Umsetzung bei Bestandsgebäuden und anspruchsvollen Umbauten.",
+  },
+  {
+    title: "Schnelle Hilfe",
+    text: "Unterstützung bei Störungen, Defekten und akuten Problemen mit klarer Fehlersuche vor Ort.",
+  },
+];
+
+const processCards = [
+  {
+    step: "1",
+    title: "Anfrage und Beratung",
+    text: "Wir klären Ihr Vorhaben, den Umfang der Arbeiten und die wichtigsten Rahmenbedingungen.",
+  },
+  {
+    step: "2",
+    title: "Planung und Vorbereitung",
+    text: "Die nächsten Schritte werden sauber strukturiert und fachgerecht vorbereitet.",
+  },
+  {
+    step: "3",
+    title: "Ausführung vor Ort",
+    text: "Die Umsetzung erfolgt zuverlässig, sauber und mit klaren Abläufen auf der Baustelle.",
+  },
+  {
+    step: "4",
+    title: "Abschluss und Übergabe",
+    text: "Nach Fertigstellung folgt die saubere Übergabe mit klarer Abstimmung zum Projektabschluss.",
   },
 ];
 
 const badgeClass =
-  "inline-flex rounded-full border border-[#b7d9bf] bg-[#eef7f0] px-4 py-2 text-xs sm:text-sm font-semibold tracking-[0.05em] text-[#2f7d3b]";
+  "inline-flex rounded-full border border-[#dbe9de] bg-[#f4faf5] px-3 py-2 text-[11px] sm:px-4 sm:text-xs md:text-sm font-semibold tracking-[0.08em] text-[#2f7d3b]";
 
-const lineCardClass =
-  "relative overflow-hidden rounded-2xl border border-[#e7e2d8] bg-white p-5 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md before:absolute before:left-0 before:top-0 before:h-[4px] before:w-full before:bg-[#2f7d3b]";
+const cardClass =
+  "group relative h-full overflow-hidden rounded-[1.6rem] sm:rounded-[2rem] border border-[#ece7de] bg-white/95 p-5 sm:p-6 md:p-7 shadow-[0_14px_40px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.10)]";
 
-const lineCardSoftClass =
-  "relative overflow-hidden rounded-2xl border border-[#e7e2d8] bg-[#f8f6f0] p-5 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md before:absolute before:left-0 before:top-0 before:h-[4px] before:w-full before:bg-[#2f7d3b]";
+const softCardClass =
+  "group relative h-full overflow-hidden rounded-[1.6rem] sm:rounded-[2rem] border border-[#ebe5da] bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(249,247,242,0.96)_100%)] p-5 sm:p-6 md:p-7 shadow-[0_14px_40px_rgba(15,23,42,0.05)] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(15,23,42,0.09)]";
 
 export default function Home() {
   const localBusinessSchema = {
@@ -104,6 +157,12 @@ export default function Home() {
     image: "https://www.elektro-siegfried.de/og-image.jpg",
     url: "https://www.elektro-siegfried.de",
     telephone: "+4917644481312",
+    areaServed: "München und Umgebung",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "München",
+      addressCountry: "DE",
+    },
   };
 
   return (
@@ -115,448 +174,285 @@ export default function Home() {
         }}
       />
 
-      <main className="min-h-screen bg-[#f8f6f0] pb-24 text-[#1f1715] md:pb-0">
+      <main className="min-h-screen bg-[#f9f7f2] pb-24 text-[#1f1715] md:pb-0">
         <Hero />
 
-        {/* Intro / Schnellvertrauen */}
-        <section className="border-b border-[#e7e2d8] bg-white py-10">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="grid gap-4 md:grid-cols-3">
-              <div className={lineCardSoftClass}>
-                <p className="mb-2 text-sm font-semibold tracking-[0.08em] text-[#2f7d3b]">
-                  Anspruch
-                </p>
-                <p className="text-[#3c342f]">
-                  Saubere Ausführung mit klaren Abläufen und verlässlicher
-                  Abstimmung.
-                </p>
-              </div>
+        {/* 3 Karten unter dem Hero */}
+        <section className="relative border-b border-[#ece6dc] bg-[#fffdf9] py-8 sm:py-10 lg:py-12">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,125,59,0.05),transparent_26%)]" />
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <div className="grid items-stretch gap-4 sm:gap-5 md:grid-cols-3">
+              <ScrollReveal>
+                <div
+                  className={`${softCardClass} flex flex-col hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(15,23,42,0.10)]`}
+                >
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#2f7d3b]/8 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-[#2f7d3b]/12" />
+                  <div className="absolute inset-0 rounded-[1.6rem] sm:rounded-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(47,125,59,0.03)_100%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="relative flex h-14 sm:h-16 items-center">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-[#2f7d3b] shadow-[0_8px_18px_rgba(47,125,59,0.10)] transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:bg-[#2f7d3b] group-hover:text-white group-hover:shadow-[0_16px_35px_rgba(47,125,59,0.22)]">
+                      <ShieldCheck className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+                  </div>
+                  <div className="relative flex flex-1 flex-col">
+                    <p className="mt-3 sm:mt-4 text-sm font-semibold tracking-[0.08em] text-[#2f7d3b] transition duration-300 group-hover:text-[#276a32]">
+                      Meisterbetrieb
+                    </p>
+                    <p className="mt-2 sm:mt-3 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      Fachgerechte Elektroarbeiten mit sauberer Ausführung und verlässlicher Abstimmung.
+                    </p>
+                    <div className="mt-auto pt-4" />
+                  </div>
+                </div>
+              </ScrollReveal>
 
-              <div className={lineCardSoftClass}>
-                <p className="mb-2 text-sm font-semibold tracking-[0.08em] text-[#2f7d3b]">
-                  Region
-                </p>
-                <p className="text-[#3c342f]">
-                  Elektroarbeiten in München und Umgebung mit persönlichem
-                  Ansprechpartner.
-                </p>
-              </div>
+              <ScrollReveal delay={0.08}>
+                <div
+                  className={`${softCardClass} flex flex-col hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(15,23,42,0.10)]`}
+                >
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#2f7d3b]/8 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-[#2f7d3b]/12" />
+                  <div className="absolute inset-0 rounded-[1.6rem] sm:rounded-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(47,125,59,0.03)_100%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="relative flex h-14 sm:h-16 items-center">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-[#2f7d3b] shadow-[0_8px_18px_rgba(47,125,59,0.10)] transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:bg-[#2f7d3b] group-hover:text-white group-hover:shadow-[0_16px_35px_rgba(47,125,59,0.22)]">
+                      <Bolt className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+                  </div>
+                  <div className="relative flex flex-1 flex-col">
+                    <p className="mt-3 sm:mt-4 text-sm font-semibold tracking-[0.08em] text-[#2f7d3b] transition duration-300 group-hover:text-[#276a32]">
+                      Moderne Lösungen
+                    </p>
+                    <p className="mt-2 sm:mt-3 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      Von klassischer Elektroinstallation bis Wallbox, Photovoltaik und smarter Gebäudetechnik.
+                    </p>
+                    <div className="mt-auto pt-4" />
+                  </div>
+                </div>
+              </ScrollReveal>
 
-              <div className={lineCardSoftClass}>
-                <p className="mb-2 text-sm font-semibold tracking-[0.08em] text-[#2f7d3b]">
-                  Zusammenarbeit
-                </p>
-                <p className="text-[#3c342f]">
-                  Strukturierte Unterstützung für Neubau, Umbau, Sanierung und
-                  Modernisierung.
-                </p>
-              </div>
+              <ScrollReveal delay={0.16}>
+                <div
+                  className={`${softCardClass} flex flex-col hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(15,23,42,0.10)]`}
+                >
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#2f7d3b]/8 blur-2xl transition-all duration-500 group-hover:scale-125 group-hover:bg-[#2f7d3b]/12" />
+                  <div className="absolute inset-0 rounded-[1.6rem] sm:rounded-[2rem] bg-[linear-gradient(180deg,rgba(255,255,255,0)_0%,rgba(47,125,59,0.03)_100%)] opacity-0 transition duration-500 group-hover:opacity-100" />
+                  <div className="relative flex h-14 sm:h-16 items-center">
+                    <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-[#2f7d3b] shadow-[0_8px_18px_rgba(47,125,59,0.10)] transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:bg-[#2f7d3b] group-hover:text-white group-hover:shadow-[0_16px_35px_rgba(47,125,59,0.22)]">
+                      <PhoneCall className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+                  </div>
+                  <div className="relative flex flex-1 flex-col">
+                    <p className="mt-3 sm:mt-4 text-sm font-semibold tracking-[0.08em] text-[#2f7d3b] transition duration-300 group-hover:text-[#276a32]">
+                      München und Umgebung
+                    </p>
+                    <p className="mt-2 sm:mt-3 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      Persönliche Betreuung, klare Kommunikation und zuverlässige Umsetzung für private und gewerbliche Projekte.
+                    </p>
+                    <div className="mt-auto pt-4" />
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
           </div>
         </section>
 
-        {/* Leistungsbereiche */}
-        <section className="bg-white py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mx-auto max-w-3xl text-center">
+        {/* Leistungen Leinwand */}
+        <section className="relative bg-white py-14 sm:py-16 lg:py-24">
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(249,247,242,0.65)_100%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <ScrollReveal className="mx-auto max-w-3xl text-center">
               <p className={badgeClass}>Leistungsbereiche</p>
-
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-                Strukturierte Lösungen
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+                Unsere Leistungen
                 <span className="block text-stone-700">
-                  für moderne Elektrotechnik
+                  im Überblick
                 </span>
               </h2>
-
-              <p className="mt-5 text-base leading-7 text-[#6e625c] sm:text-lg sm:leading-8">
-                Elektro Siegfried verbindet klassische Elektroarbeiten mit
-                modernen Lösungen für Energie, Komfort und zukunftssichere
-                Gebäudetechnik.
+              <p className="mt-4 sm:mt-5 max-w-2xl mx-auto text-sm leading-6 sm:text-base sm:leading-7 lg:text-lg lg:leading-8 text-[#6e625c]">
+                Entdecken Sie unsere Leistungen für Neubau, Sanierung, Modernisierung und moderne Gebäudetechnik in München und Umgebung.
               </p>
+            </ScrollReveal>
+
+            <div className="mt-10 sm:mt-12">
+              <ServicesCanvas cards={serviceCards} />
             </div>
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              {serviceCards.map((card) => {
-                const Icon = card.icon;
-
-                return (
-                  <Link
-                    key={card.title}
-                    href={card.href}
-                    className="group relative flex h-full min-h-[320px] flex-col overflow-hidden rounded-2xl border border-[#e7e2d8] bg-[#f3efe6] p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md sm:p-6 md:min-h-[360px]"
-                  >
-                    <div className="absolute left-0 top-0 h-[4px] w-full bg-[#2f7d3b]" />
-
-                    <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-white text-[#2f7d3b] shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-[#2f7d3b] group-hover:text-white">
-                      <Icon className="h-6 w-6" />
-                    </div>
-
-                    <div className="mt-6 flex flex-1 flex-col">
-                      <h3 className="text-xl font-semibold leading-snug text-[#1f1715]">
-                        {card.title}
-                      </h3>
-
-                      <p className="mt-4 text-sm leading-7 text-[#4e433d]">
-                        {card.text}
-                      </p>
-
-                      <div className="mt-5 flex flex-wrap gap-2">
-                        {card.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-[#d8e8dc] bg-[#fbfcfb] px-3 py-1 text-xs font-semibold text-[#2f7d3b]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="mt-auto pt-6 text-sm font-semibold text-[#2f7d3b] transition-transform duration-300 group-hover:translate-x-1">
-                        Mehr erfahren →
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
-            </div>
+            <ScrollReveal delay={0.12} className="mt-8 sm:mt-10 text-center">
+              <Link
+                href="/leistungen"
+                className="inline-flex min-h-[48px] items-center justify-center rounded-xl bg-[#2f7d3b] px-6 sm:px-8 py-3 font-bold !text-white shadow-[0_12px_25px_rgba(47,125,59,0.18)] transition hover:bg-[#276a32]"
+              >
+                Alle Leistungen ansehen
+              </Link>
+            </ScrollReveal>
           </div>
         </section>
 
-        {/* Für wen wir arbeiten */}
-        <section className="bg-[#f3f0e8] py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mx-auto max-w-3xl text-center">
+        {/* Für wen */}
+        <section className="relative bg-[#f8f5ef] py-14 sm:py-16 lg:py-24">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(47,125,59,0.05),transparent_24%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <ScrollReveal className="mx-auto max-w-3xl text-center">
               <p className={badgeClass}>Für wen wir arbeiten</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-                Passende Lösungen
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+                Passende Lösungen für
                 <span className="block text-stone-700">
-                  für unterschiedliche Projekte
+                  private und gewerbliche Projekte
                 </span>
               </h2>
-              <p className="mt-5 text-base leading-7 text-[#6e625c] sm:text-lg sm:leading-8">
-                Wir unterstützen private Auftraggeber, Hausverwaltungen,
-                Sanierungen im Bestand sowie Bauprojekte, bei denen
-                zuverlässige Elektroarbeiten, saubere Abstimmung und schnelle
-                Hilfe gefragt sind.
+              <p className="mt-4 sm:mt-5 text-sm leading-6 sm:text-base sm:leading-7 lg:text-lg lg:leading-8 text-[#6e625c]">
+                Ob Privatkunde, Hausverwaltung oder Sanierung im Bestand. Entscheidend sind klare Abstimmung, zuverlässige Ausführung und saubere Ergebnisse.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-              <div className={lineCardClass}>
-                <h3 className="text-xl font-semibold text-[#1f1715]">
-                  Privatkunden
-                </h3>
-                <p className="mt-4 text-[#3c342f]">
-                  Ob Modernisierung, Umbau oder neue Elektroinstallation: Wir
-                  begleiten private Projekte mit klarer Kommunikation und
-                  sauberer Ausführung.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-xl font-semibold text-[#1f1715]">
-                  Hausverwaltungen
-                </h3>
-                <p className="mt-4 text-[#3c342f]">
-                  Für Hausverwaltungen übernehmen wir Elektroarbeiten,
-                  Instandhaltung, Modernisierung und eine saubere Abstimmung bei
-                  laufenden Objekten.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-xl font-semibold text-[#1f1715]">
-                  Sanierung & Umbau
-                </h3>
-                <p className="mt-4 text-[#3c342f]">
-                  Gerade im Bestand sind strukturierte Planung und zuverlässige
-                  Umsetzung besonders wichtig. Wir begleiten Sanierung und Umbau
-                  fachgerecht und lösungsorientiert.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-xl font-semibold text-[#1f1715]">
-                  Notdienst & schnelle Hilfe
-                </h3>
-                <p className="mt-4 text-[#3c342f]">
-                  Bei Störungen, Defekten oder akuten Problemen unterstützen wir
-                  schnell, zuverlässig und mit klarer Fehlersuche.
-                </p>
-              </div>
+            <div className="mt-10 sm:mt-12 grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {audienceCards.map((item, index) => (
+                <ScrollReveal key={item.title} delay={index * 0.06}>
+                  <div className={cardClass}>
+                    <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#2f7d3b]/7 blur-2xl" />
+                    <h3 className="relative text-lg sm:text-xl font-semibold text-[#1f1715]">
+                      {item.title}
+                    </h3>
+                    <p className="relative mt-3 sm:mt-4 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      {item.text}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* So arbeiten wir */}
-        <section className="bg-white py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mx-auto max-w-3xl text-center">
+        {/* Ablauf */}
+        <section className="relative bg-white py-14 sm:py-16 lg:py-24">
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,1)_0%,rgba(244,250,245,0.35)_100%)]" />
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <ScrollReveal className="mx-auto max-w-3xl text-center">
               <p className={badgeClass}>So arbeiten wir</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-                Klar strukturierte Abläufe
+              <h2 className="mt-4 text-2xl font-bold tracking-tight text-stone-900 sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+                Klarer Ablauf von der Anfrage
                 <span className="block text-stone-700">
-                  von der Anfrage bis zur Umsetzung
+                  bis zur sauberen Umsetzung
                 </span>
               </h2>
-              <p className="mt-5 text-base leading-7 text-[#6e625c] sm:text-lg sm:leading-8">
-                Ein sauberer Projektablauf sorgt für Planungssicherheit. Deshalb
-                legen wir Wert auf klare Abstimmung, fachgerechte Vorbereitung
-                und zuverlässige Ausführung.
+              <p className="mt-4 sm:mt-5 text-sm leading-6 sm:text-base sm:leading-7 lg:text-lg lg:leading-8 text-[#6e625c]">
+                Ein strukturierter Projektablauf schafft Sicherheit. Deshalb legen wir Wert auf saubere Vorbereitung, klare Kommunikation und zuverlässige Ausführung.
               </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-              <div className={lineCardSoftClass}>
-                <div className="text-2xl font-bold text-[#2f7d3b]">1</div>
-                <h3 className="mt-3 text-lg font-semibold text-[#1f1715]">
-                  Anfrage & Beratung
-                </h3>
-                <p className="mt-2 text-[#3c342f]">
-                  Zu Beginn klären wir Ihr Vorhaben, den Umfang der Arbeiten und
-                  die wichtigsten Rahmenbedingungen.
-                </p>
-              </div>
-
-              <div className={lineCardSoftClass}>
-                <div className="text-2xl font-bold text-[#2f7d3b]">2</div>
-                <h3 className="mt-3 text-lg font-semibold text-[#1f1715]">
-                  Planung & Vorbereitung
-                </h3>
-                <p className="mt-2 text-[#3c342f]">
-                  Anschließend strukturieren wir die nächsten Schritte und
-                  bereiten die Umsetzung fachgerecht und effizient vor.
-                </p>
-              </div>
-
-              <div className={lineCardSoftClass}>
-                <div className="text-2xl font-bold text-[#2f7d3b]">3</div>
-                <h3 className="mt-3 text-lg font-semibold text-[#1f1715]">
-                  Ausführung vor Ort
-                </h3>
-                <p className="mt-2 text-[#3c342f]">
-                  Die Arbeiten werden sauber, zuverlässig und mit Blick auf
-                  klare Abläufe auf der Baustelle umgesetzt.
-                </p>
-              </div>
-
-              <div className={lineCardSoftClass}>
-                <div className="text-2xl font-bold text-[#2f7d3b]">4</div>
-                <h3 className="mt-3 text-lg font-semibold text-[#1f1715]">
-                  Abschluss & Übergabe
-                </h3>
-                <p className="mt-2 text-[#3c342f]">
-                  Nach Fertigstellung erfolgt die saubere Übergabe und eine
-                  klare Abstimmung zum Abschluss des Projekts.
-                </p>
-              </div>
+            <div className="mt-10 sm:mt-12 grid gap-4 sm:gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {processCards.map((item, index) => (
+                <ScrollReveal key={item.step} delay={index * 0.06}>
+                  <div className={softCardClass}>
+                    <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#2f7d3b]/7 blur-2xl" />
+                    <div className="relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-base sm:text-lg font-bold text-[#2f7d3b] shadow-[0_8px_18px_rgba(47,125,59,0.10)] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#2f7d3b] group-hover:text-white">
+                      {item.step}
+                    </div>
+                    <h3 className="relative mt-4 sm:mt-5 text-base sm:text-lg font-semibold text-[#1f1715]">
+                      {item.title}
+                    </h3>
+                    <p className="relative mt-2 sm:mt-3 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      {item.text}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Warum Elektro Siegfried */}
-        <section className="relative overflow-hidden bg-[#f3f0e8] py-16 sm:py-20">
-          <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
-            <div className="h-full w-full bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]" />
-          </div>
+        {/* SEO / Local trust */}
+        <section className="bg-[#f8f5ef] py-14 sm:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
+            <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+              <ScrollReveal>
+                <div className={cardClass}>
+                  <div className="mb-4 sm:mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-[#2f7d3b] shadow-sm">
+                    <MapPin className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </div>
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-[#1f1715]">
+                    Elektroarbeiten in München und Umgebung
+                  </h2>
+                  <p className="mt-3 sm:mt-4 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                    Elektro Siegfried begleitet Projekte im Raum München mit sauberer Ausführung, klarer Kommunikation und moderner Elektrotechnik. Dazu gehören Elektroinstallationen, Sanierung, Wallbox, Photovoltaik, Wärmepumpen und intelligente Gebäudetechnik.
+                  </p>
+                </div>
+              </ScrollReveal>
 
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className={badgeClass}>Warum ELEKTRO SIEGFRIED</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-                Fachgerechte Elektrotechnik
-                <span className="block text-stone-700">
-                  mit klarer Struktur
-                </span>
-              </h2>
-              <p className="mt-5 text-base leading-7 text-[#6e625c] sm:text-lg sm:leading-8">
-                Klare Abläufe, saubere Umsetzung und zuverlässige
-                Projektbegleitung stehen bei uns im Mittelpunkt.
-              </p>
-            </div>
+              <div className="grid gap-4 sm:gap-6 sm:grid-cols-2">
+                <ScrollReveal delay={0.06}>
+                  <div className={softCardClass}>
+                    <div className="mb-4 sm:mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-[#2f7d3b] shadow-sm">
+                      <BadgeCheck className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-semibold text-[#1f1715]">
+                      Saubere Ausführung
+                    </h3>
+                    <p className="mt-2 sm:mt-3 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      Verlässliche Umsetzung mit strukturierten Abläufen und klarer Abstimmung.
+                    </p>
+                  </div>
+                </ScrollReveal>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <div className={lineCardClass}>
-                <h3 className="text-lg font-semibold text-[#1f1715]">
-                  Strukturierte Projektabwicklung
-                </h3>
-                <p className="mt-3 text-[#3c342f]">
-                  Von Planung bis Umsetzung sorgen wir für klare Abläufe und
-                  transparente Kommunikation.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-lg font-semibold text-[#1f1715]">
-                  Moderne Elektrotechnik
-                </h3>
-                <p className="mt-3 text-[#3c342f]">
-                  Neben klassischen Elektroarbeiten begleiten wir auch moderne
-                  Lösungen wie Wallbox, Photovoltaik, Wärmepumpen und Smart
-                  Home.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-lg font-semibold text-[#1f1715]">
-                  Zuverlässigkeit
-                </h3>
-                <p className="mt-3 text-[#3c342f]">
-                  Termine, Qualität und saubere Ausführung stehen im Fokus jeder
-                  Projektphase.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Vertrauen */}
-        <section className="bg-white py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className={badgeClass}>Vertrauen</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-                Zuverlässige Umsetzung
-                <span className="block text-stone-700">
-                  für Elektroprojekte
-                </span>
-              </h2>
-              <p className="mt-5 text-base leading-7 text-[#6e625c] sm:text-lg sm:leading-8">
-                Saubere Ausführung, strukturierte Abläufe und klare
-                Kommunikation stehen bei jedem Projekt im Mittelpunkt.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <div className={lineCardSoftClass}>
-                <p className="text-[#3c342f]">
-                  Saubere Arbeitsweise, verlässliche Terminabstimmung und klare
-                  Kommunikation sind die Grundlage professioneller
-                  Elektroarbeiten.
-                </p>
-              </div>
-
-              <div className={lineCardSoftClass}>
-                <p className="text-[#3c342f]">
-                  Wir arbeiten strukturiert und lösungsorientiert, damit
-                  Baustellen und Umbauten möglichst reibungslos umgesetzt
-                  werden.
-                </p>
-              </div>
-
-              <div className={lineCardSoftClass}>
-                <p className="text-[#3c342f]">
-                  Elektro Siegfried steht für verlässliche Unterstützung in den
-                  Bereichen Elektroinstallation, Sanierung und moderne
-                  Gebäudetechnik in München und Umgebung.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Einsatzgebiet */}
-        <section className="bg-[#f3f0e8] py-16 sm:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mx-auto max-w-3xl text-center">
-              <p className={badgeClass}>Einsatzgebiet</p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-stone-900 sm:text-4xl md:text-5xl">
-                Elektrotechnik
-                <span className="block text-stone-700">
-                  in München und Umgebung
-                </span>
-              </h2>
-              <p className="mt-5 text-base leading-7 text-[#6e625c] sm:text-lg sm:leading-8">
-                Wir begleiten Projekte im Raum München und in umliegenden
-                Regionen mit klarer Struktur und zuverlässiger Ausführung.
-              </p>
-            </div>
-
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <div className={lineCardClass}>
-                <h3 className="text-lg font-semibold text-[#1f1715]">
-                  München
-                </h3>
-                <p className="mt-3 text-[#3c342f]">
-                  Projekte im Stadtgebiet mit Fokus auf saubere Ausführung und
-                  verlässliche Abläufe.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-lg font-semibold text-[#1f1715]">
-                  Umland
-                </h3>
-                <p className="mt-3 text-[#3c342f]">
-                  Je nach Projektumfang unterstützen wir auch Bauvorhaben in
-                  umliegenden Regionen rund um München.
-                </p>
-              </div>
-
-              <div className={lineCardClass}>
-                <h3 className="text-lg font-semibold text-[#1f1715]">
-                  Sanierung & Umbau
-                </h3>
-                <p className="mt-3 text-[#3c342f]">
-                  Besonders bei Bestandsobjekten sind strukturierte Vorbereitung
-                  und saubere Abstimmung entscheidend.
-                </p>
+                <ScrollReveal delay={0.12}>
+                  <div className={softCardClass}>
+                    <div className="mb-4 sm:mb-5 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-[1rem] sm:rounded-[1.2rem] border border-[#dce8de] bg-[#f4faf5] text-[#2f7d3b] shadow-sm">
+                      <Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />
+                    </div>
+                    <h3 className="text-base sm:text-lg font-semibold text-[#1f1715]">
+                      Moderne Technik
+                    </h3>
+                    <p className="mt-2 sm:mt-3 text-sm leading-6 sm:text-base sm:leading-7 text-[#4e433d]">
+                      Zukunftssichere Lösungen für Energie, Komfort und Funktion im Gebäude.
+                    </p>
+                  </div>
+                </ScrollReveal>
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="relative overflow-hidden bg-[#1f4f28] py-20 text-white sm:py-24 md:py-28">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(255,255,255,0.08),transparent_34%)]" />
+        <section className="relative overflow-hidden bg-gradient-to-br from-[#f3faf4] via-[#eef7f0] to-[#f8f6f0] py-14 sm:py-16 md:py-24">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(47,125,59,0.10),transparent_30%),radial-gradient(circle_at_bottom_right,rgba(47,125,59,0.08),transparent_34%)]" />
 
-          <div className="relative mx-auto max-w-4xl px-6">
-            <div className="rounded-[2rem] border border-white/15 bg-white/10 px-6 py-12 text-center shadow-[0_30px_90px_rgba(0,0,0,0.22)] backdrop-blur-sm sm:px-8 md:px-14 md:py-14">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-white/85">
-                Kontakt
-              </p>
+          <div className="relative mx-auto max-w-4xl px-4 sm:px-6">
+            <ScrollReveal>
+              <div className="rounded-[1.6rem] sm:rounded-[2rem] border border-[#dfe9e1] bg-white/85 px-5 py-10 sm:px-8 sm:py-12 md:px-14 md:py-14 text-center shadow-[0_30px_90px_rgba(0,0,0,0.08)] backdrop-blur-sm">
+                <p className="text-[11px] sm:text-sm font-semibold uppercase tracking-[0.24em] text-[#2f7d3b]">
+                  Kontakt
+                </p>
 
-              <div className="mx-auto mt-4 h-[2px] w-24 rounded-full bg-white/70" />
+                <div className="mx-auto mt-4 h-[2px] w-20 sm:w-24 rounded-full bg-[#2f7d3b]/60" />
 
-              <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-                Bereit für
-                <span className="block text-white/80">Ihr Projekt?</span>
-              </h2>
+                <h2 className="mt-5 sm:mt-6 text-2xl font-bold tracking-tight text-[#1f1715] sm:text-3xl md:text-4xl lg:text-5xl leading-tight">
+                  Bereit für Ihr Projekt in
+                  <span className="block text-[#4e433d]">
+                    München und Umgebung?
+                  </span>
+                </h2>
 
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/85 sm:text-lg sm:leading-8">
-                Wir begleiten Elektroprojekte in München und Umgebung mit klarer
-                Struktur, fachlicher Präzision und einer sauberen,
-                zuverlässigen Umsetzung.
-              </p>
+                <p className="mx-auto mt-4 sm:mt-5 max-w-2xl text-sm leading-6 sm:text-base sm:leading-7 lg:text-lg lg:leading-8 text-[#5f544d]">
+                  Elektro Siegfried begleitet Ihr Vorhaben mit klarer Struktur, fachlicher Präzision und einer sauberen, zuverlässigen Umsetzung.
+                </p>
 
-              <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row sm:flex-wrap">
-                <a
-                  href="tel:+4917644481312"
-                  className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-white px-8 py-3 font-bold !text-[#1f4f28] shadow-[0_12px_30px_rgba(255,255,255,0.18)] transition hover:bg-[#f3f0e8] sm:w-auto"
-                >
-                  Jetzt anrufen
-                </a>
+                <div className="mt-8 sm:mt-10 flex flex-col justify-center gap-3 sm:gap-4 sm:flex-row sm:flex-wrap">
+                  <a
+                    href="tel:+4917644481312"
+                    className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl bg-[#2f7d3b] px-6 sm:px-8 py-3 font-bold !text-white shadow-[0_12px_28px_rgba(47,125,59,0.18)] transition hover:bg-[#276a32] sm:w-auto"
+                  >
+                    Jetzt anrufen
+                  </a>
 
-                <Link
-                  href="/kontakt"
-                  className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl border border-white/60 px-8 py-3 font-bold text-white transition hover:bg-white/10 sm:w-auto"
-                >
-                  Kontaktformular
-                </Link>
+                  <Link
+                    href="/kontakt"
+                    className="inline-flex min-h-[48px] w-full items-center justify-center rounded-xl border border-[#d9ddd8] bg-white px-6 sm:px-8 py-3 font-bold text-[#1f1715] transition hover:bg-[#f7f5ef] sm:w-auto"
+                  >
+                    Kontaktformular
+                  </Link>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
           </div>
         </section>
-
-        {/* Mobile Call Button */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-          <a
-            href="tel:+4917644481312"
-            className="block bg-[#2f7d3b] py-4 text-center text-lg font-semibold text-white shadow-lg"
-          >
-            📞 Jetzt anrufen: 0176 444 81312
-          </a>
-        </div>
       </main>
     </>
   );

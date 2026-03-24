@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-      <body>
+      <body className="bg-[#f9f7f2] text-[#1f1715] antialiased">
         <IntroOverlay />
         <Header />
         <main className="pb-24 md:pb-0">{children}</main>

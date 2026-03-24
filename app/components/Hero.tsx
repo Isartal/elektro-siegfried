@@ -2,144 +2,153 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { ArrowRight, Phone, ShieldCheck, Zap, MapPin } from "lucide-react";
 
 export default function Hero() {
-  const [frameFinished, setFrameFinished] = useState(false);
-  const [showFinalFrame, setShowFinalFrame] = useState(false);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    const stopTimer = setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.pause();
-      }
-      setFrameFinished(true);
-
-      setTimeout(() => {
-        setShowFinalFrame(true);
-      }, 80);
-    }, 4000);
-
-    return () => clearTimeout(stopTimer);
-  }, []);
-
   return (
-    <section className="relative min-h-[82vh] overflow-hidden sm:min-h-[88vh] lg:min-h-[92vh]">
-      <div className="absolute inset-0 scale-[1.03]">
+    <section className="relative overflow-hidden bg-[#f9f7f2]">
+      {/* Background image */}
+      <div className="absolute inset-0">
         <Image
-          src="/heronen-elektro.jpg"
-          alt="Moderne Beleuchtung und Elektrotechnik"
+          src="/projekt-3.png"
+          alt="Elektroarbeiten in München und Umgebung"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover opacity-[0.82]"
         />
       </div>
 
-      <div className="absolute inset-0 bg-black/35" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/30 to-black/60" />
-      <div className="absolute inset-0 bg-[#2f7d3b]/20 mix-blend-multiply" />
+      {/* Ultra clean overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#f9f7f2]/92 via-[#f9f7f2]/78 to-[#f9f7f2]/18" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.7),transparent_34%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.18),rgba(255,255,255,0.05),rgba(255,255,255,0.12))]" />
 
-      <div className="pointer-events-none absolute inset-0 z-[2]">
-        {!frameFinished && (
-          <video
-            ref={videoRef}
-            autoPlay
-            muted
-            playsInline
-            className="h-full w-full object-cover opacity-90 transition-opacity duration-700"
+      <div className="relative z-10 mx-auto flex min-h-[82vh] max-w-7xl items-center px-6 py-20 lg:min-h-[88vh] lg:px-10">
+        <div className="grid w-full items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
+          {/* Left content */}
+          <motion.div
+            initial={{ opacity: 0, y: 26 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            className="max-w-3xl"
           >
-            <source src="/frame-hero-animation.mp4" type="video/mp4" />
-          </video>
-        )}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.06 }}
+              className="inline-flex rounded-full border border-[#dbe9de] bg-white/85 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#2f7d3b] shadow-sm sm:text-xs"
+            >
+              Elektromeisterbetrieb in München und Umgebung
+            </motion.p>
 
-        <Image
-          src="/frame-hero-final.png"
-          alt=""
-          fill
-          className={`object-cover transition-opacity duration-1000 ${
-            showFinalFrame ? "opacity-90" : "opacity-0"
-          }`}
-        />
-      </div>
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.12 }}
+              className="mt-6 text-4xl font-black leading-[0.98] tracking-tight text-[#18181b] sm:text-5xl md:text-6xl xl:text-[4.35rem]"
+            >
+              Moderne Elektrotechnik
+              <span className="mt-2 block text-[#4b5563]">
+                sauber, klar und zuverlässig umgesetzt
+              </span>
+            </motion.h1>
 
-      <div className="relative z-10 mx-auto flex min-h-[82vh] max-w-7xl items-center justify-center px-5 py-20 sm:min-h-[88vh] sm:px-6 sm:py-24 lg:min-h-[92vh] lg:px-10">
-        <div className="max-w-5xl text-center">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#b7e2bf] sm:text-sm md:text-base">
-            Elektromeisterbetrieb
-          </p>
+            <motion.div
+              initial={{ opacity: 0, scaleX: 0.75 }}
+              animate={{ opacity: 1, scaleX: 1 }}
+              transition={{ duration: 0.55, delay: 0.18 }}
+              className="mt-6 h-[3px] w-28 origin-left rounded-full bg-[#2f7d3b] shadow-[0_0_16px_rgba(47,125,59,0.18)] sm:w-36"
+            />
 
-          <h1 className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-3xl font-black tracking-tight text-white sm:text-5xl md:gap-x-4 md:text-6xl lg:text-7xl">
-            <span className="tracking-[0.06em] sm:tracking-[0.08em]">
-              ELEKTRO
-            </span>
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.24 }}
+              className="mt-6 max-w-2xl text-base leading-7 text-[#5f544d] sm:text-lg sm:leading-8"
+            >
+              Elektro Siegfried begleitet Neubau, Sanierung, Wallbox,
+              Photovoltaik und moderne Gebäudetechnik mit sauberer Ausführung,
+              klaren Abläufen und persönlicher Betreuung.
+            </motion.p>
 
-            <span className="flex items-center justify-center">
-              <svg
-                className="h-10 w-8 animate-lightning drop-shadow-[0_0_25px_rgba(47,125,59,0.6)] sm:h-14 sm:w-10 md:h-16 md:w-11 lg:h-20 lg:w-12"
-                viewBox="0 0 24 24"
-                fill="none"
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.32 }}
+              className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
+            >
+              <a
+                href="tel:+4917644481312"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-xl bg-[#2f7d3b] px-8 py-3.5 font-bold !text-white shadow-[0_14px_28px_rgba(47,125,59,0.20)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#276a32]"
               >
-                <path
-                  d="M13 2L4 14h6l-2 8 10-12h-6l1-8z"
-                  fill="#2f7d3b"
+                <Phone className="mr-2 h-4 w-4" />
+                Jetzt anrufen
+              </a>
+
+              <Link
+                href="/kontakt"
+                className="inline-flex min-h-[52px] items-center justify-center rounded-xl border border-[#dddcd6] bg-white/92 px-8 py-3.5 font-semibold text-[#1f1715] shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-white"
+              >
+                Anfrage stellen
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.4 }}
+              className="mt-10 grid gap-3 text-sm sm:grid-cols-3"
+            >
+              <div className="flex items-center gap-2 rounded-xl border border-[#e8e3d9] bg-white/88 px-4 py-3 text-[#27272a] shadow-sm backdrop-blur-sm">
+                <MapPin className="h-4 w-4 text-[#2f7d3b]" />
+                <span>München & Umgebung</span>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-xl border border-[#e8e3d9] bg-white/88 px-4 py-3 text-[#27272a] shadow-sm backdrop-blur-sm">
+                <ShieldCheck className="h-4 w-4 text-[#2f7d3b]" />
+                <span>Meisterbetrieb</span>
+              </div>
+
+              <div className="flex items-center gap-2 rounded-xl border border-[#e8e3d9] bg-white/88 px-4 py-3 text-[#27272a] shadow-sm backdrop-blur-sm">
+                <Zap className="h-4 w-4 text-[#2f7d3b]" />
+                <span>Sauber & zuverlässig</span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right visual panel */}
+          <motion.div
+            initial={{ opacity: 0, x: 28 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.16, ease: "easeOut" }}
+            className="hidden lg:block"
+          >
+            <div className="relative ml-auto max-w-[33rem] rounded-[2rem] border border-white/55 bg-white/40 p-4 shadow-[0_30px_70px_rgba(15,23,42,0.10)] backdrop-blur-md">
+              <div className="relative overflow-hidden rounded-[1.5rem]">
+                <Image
+                  src="/projekt-3.png"
+                  alt="Projekt von Elektro Siegfried"
+                  width={900}
+                  height={1100}
+                  className="h-[34rem] w-full object-cover"
                 />
-              </svg>
-            </span>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-white/10" />
+              </div>
 
-            <span className="tracking-[0.06em] sm:tracking-[0.08em]">
-              SIEGFRIED
-            </span>
-          </h1>
-
-          <div className="mx-auto mt-5 h-[3px] w-[170px] rounded-full bg-[#2f7d3b] shadow-[0_0_20px_rgba(47,125,59,0.35)] sm:w-[240px] md:w-[320px]" />
-
-          <p className="mt-6 text-base font-semibold leading-7 tracking-[0.02em] text-white sm:text-lg md:text-2xl">
-            Elektroarbeiten ohne Stress. Schnell. Sauber. Zuverlässig.
-          </p>
-
-          <p className="mx-auto mt-5 max-w-xs text-sm leading-7 text-white/85 sm:max-w-xl sm:text-base">
-            Ihr Elektromeisterbetrieb für Neubau, Sanierung und moderne
-            Gebäudetechnik in München & Umgebung.
-            <br />
-            <span className="font-semibold text-white">
-              Klare Abläufe, saubere Ausführung und schnelle Umsetzung.
-            </span>
-          </p>
-
-          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
-            <a
-              href="tel:+4917644481312"
-              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-xl bg-[#2f7d3b] px-8 py-3.5 text-sm font-semibold !text-white shadow-[0_12px_30px_rgba(47,125,59,0.28)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#256531] sm:min-w-[190px] sm:w-auto"
-            >
-              Direkt anrufen
-            </a>
-
-            <Link
-              href="/leistungen"
-              className="inline-flex min-h-[50px] w-full items-center justify-center rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-sm font-semibold !text-white backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:bg-white/20 sm:min-w-[190px] sm:w-auto"
-            >
-              Leistungen ansehen
-            </Link>
-          </div>
-
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 text-sm font-medium text-white sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-3 md:text-base">
-            <div className="flex items-center gap-2">
-              <span className="text-[#9fddb0]">✓</span>
-              München & Umgebung
+              <div className="absolute -bottom-5 -left-5 rounded-2xl border border-[#dfe9e1] bg-white/92 px-5 py-4 shadow-[0_16px_35px_rgba(15,23,42,0.10)] backdrop-blur-sm">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#2f7d3b]">
+                  Elektro Siegfried
+                </p>
+                <p className="mt-2 text-sm leading-6 text-[#4e433d]">
+                  Strukturierte Elektroarbeiten für Neubau, Sanierung und
+                  moderne Gebäudetechnik.
+                </p>
+              </div>
             </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-[#9fddb0]">✓</span>
-              Elektromeisterbetrieb
-            </div>
-
-            <div className="flex items-center gap-2 text-center sm:text-left">
-              <span className="text-[#9fddb0]">✓</span>
-              Saubere und zuverlässige Ausführung
-            </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
